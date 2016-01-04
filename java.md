@@ -287,11 +287,50 @@ while (i < 5) {
 例外処理
 ----------------------
 
+### 例外処理の3分類
+
+1. Error
+    * 例外処理は任意
+2. RuntimeException
+    * 例外処理は任意
+3. Runtime以外のException
+    * 例外処理が必須
+
+
+### 例外クラスの例
+
+|        カテゴリ        |             Class名            |                          発生パターン                          |
+|------------------------|--------------------------------|----------------------------------------------------------------|
+| Error                  | AssertError                    | assert文を使用しているときに、falseが返ったとき                |
+|                        | ExceptionInInitializer         | staticイニシャライザで予想外の処理が行われたとき               |
+|                        | StackOverflowError             | アプリケーションでの再起の回数が多すぎるとき                   |
+|                        | NoClassDefFoundError           | 読み込もうとしたクラスファイルが見つからないとき               |
+| RuntimeException       | ArrayIndexOutOfBoundsException | 不正なインデックスで要素にアクセスしたとき                     |
+|                        | ClassCastException             | 参照変数において誤ったキャストを行ったとき                     |
+|                        | IllegalArgumentException       | メソッドの引数に不正なものを利用したとき                       |
+|                        | IleegalStateException          | メソッド呼び出しが正しくない状態で行われたとき                 |
+|                        | NullPointerException           | nullが代入されている参照変数に対して、呼び出しをおこなったとき |
+|                        | NumberFormatException          | 整数でない文字列に整数変換を行ったとき                         |
+| Runtime以外のException | IOException                    | 入出力を行うとき                                               |
+|                        | FileNoFoundException           | inputファイルが存在しないとき                                  |
+|                        | ClassNotFoundException         | クラス名を表す文字列を引数にしたが、見つからなかったとき       |
+
+
+* throwsキーワードをもつメソッドのoverride
+    * サブクラスのメソッドがスローする例外は、スーパークラスのメソッドがスルーする例外クラスと同じか、その例外クラスのサブクラスとする
+    * サブクラスのメソッドがスルーする例外は、RuntimeExceptionおよびRuntimeExceptionのサブクラスの例外はスーパークラスのメソッドに関係なくスローできる
+    * スーパークラスのメソッドにthrowsがあっても、サブクラス側でthrowsを記述しないことは可能
+
 interface
 ----------------------
 
+* interface
+    * 変数はpublic static finalが暗黙的に追加
+    * メソッドはpublic abstractが暗黙的に追加
+
 Thread処理
 ----------------------
+
 
 
 特性的に備わった機能
