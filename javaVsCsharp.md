@@ -46,7 +46,8 @@
 | プロパティ           | ---※3          | Property     |
 | 定数名               | CONST          | Const※2      |
 | public変数名         | valueName      | ValueName    |
-| public以外の変数名   | valueName      | valueName    |
+| private以外の変数名   | valueName      | _valueName    |
+| その他の以外の変数名   | valueName      | valueName    |
 | メソッド名           | getLast        | GetLast      |
 
 * ※1:C# では I で始まる名前

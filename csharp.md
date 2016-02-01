@@ -292,14 +292,15 @@ Directory.CreateDirectory(string path);
 ```cs
 //using System.IO;
 string path = @"C:\tmp\hoge.txt";
-string fileNm = Path.GetFileName(path1); // hoge.txt
+string fileNm = Path.GetFileName(path); // hoge.txt
 ```
 
 例外処理
 ----------------------
 
 * [Reference-例外と例外処理](https://msdn.microsoft.com/ja-jp/library/ms173160.aspx)
-* 例外は、最終的にはすべて System.Exception から派生する型です。
+* [Reference-javaとの例外処理の違い](http://blogs.msdn.com/b/nakama/archive/2009/01/09/net-java.aspx)
+    * C#における例外は、最終的にはすべて System.Exception から派生する型です。
 
 |           名前空間          |           クラス名          |                                        発生パターン                                        |
 | --------------------------- | --------------------------- | ------------------------------------------------------------------------------------------ |
@@ -499,3 +500,50 @@ finally
 MessageBox.Show(path);
 ```
 
+開発ツール
+======================
+
+単体テストツール
+----------------------
+
+ビルドツール
+----------------------
+
+* [msbuild](https://ja.wikipedia.org/wiki/MSBuild)
+    * msbuild は Microsoft 製のビルドツールです。 多くの場合は Visual Studio が生成した .csproj ファイルや .sln ファイルを直接 msbuild の対象として使う
+    * Visual Studio 上で参照を追加してあれば、 これといってコマンド上で何か特別に操作する必要はない
+    * msbuild 用に .csproj ファイルなどを直接編集する場合は Project の子要素 ItemGroup に Reference 要素を追加して Sample.dll を参照に加えます。
+
+```cs
+<Project ...>
+    ...
+    <ItemGroup>
+        <Reference Include="Sample.dll" />
+        ...
+    </ItemGroup>
+    ...
+</Project>
+```
+
+* [NAnt](http://nant.sourceforge.net/)
+    * `NAnt`はオープンソースの .NET 環境用ビルドツール
+    * `NAnt`の場合は`csc`タスクや`vbc`タスクの子要素として references 要素を定義し、 そこで 対象のDLLを指定すれば参照に加えることができます
+
+```
+<csc ...>
+    <references>
+        <lib>
+            <include name="..\package"/>
+        </lib>
+        <include name="Sample.dll"/>
+    </references>
+</csc>
+```
+
+テキストエディタエンジン
+-----------------------
+
+* [Azuki](http://sgry.b.osdn.me/)
+    * .NET Compact Framework を含めた .NET 環境用の、 C# で作られているテキストエディタの「エンジン」です。 Visual Studio を使っていればドラッグ＆ドロップで配置できる GUI コンポーネント、ドキュメント、ビュー、シンタックスハイライターなどを提供します
+
+<http://srad.jp/story/09/01/27/0547207/>

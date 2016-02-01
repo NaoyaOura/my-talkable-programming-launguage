@@ -339,3 +339,25 @@ Thread処理
 Stream(java8から実装)
 ----------------------
 
+
+開発ツール
+=======================
+
+単体テストツール
+--------------------------
+
+* JUnit
+
+ビルドツール
+--------------------------
+
+* [Apache Ant](https://ja.wikipedia.org/wiki/Apache_Ant)
+* [Apache Maven](https://ja.wikipedia.org/wiki/Apache_Maven)
+	* Apache Maven（アパッチ メイヴン／メイヴェン）は、Java用プロジェクト管理ツールである。Apache Antに代わるものとして作られた
+* [Gradle](http://gradle.monochromeroad.com/docs/index.html)
+	* Gradleとは、Ant、Maven等と同じくビルドツールの一種である。
+	* 従来のビルドツールの記述方式はXMLであったが、GradleではGroovyというスクリプト言語を使用する。
+	* ビルドスクリプトをシンプルに記述することが出来て、 Antのように処理を記述することも可能であり、 Maven同等のライブラリ管理機能も備えているという とても柔軟なビルドツール
+
+
+
