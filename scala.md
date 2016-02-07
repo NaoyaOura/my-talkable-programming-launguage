@@ -247,6 +247,21 @@ while(i < 5){
 関数定義
 ----------------------
 
+* 戻り値無しの関数定義
+
+```scala
+def methodName(String arg) {
+}
+```
+
+または
+
+
+```scala
+def methodName(String arg): Unit = {
+}
+```
+
 クラス定義
 ----------------------
 

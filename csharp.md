@@ -454,6 +454,39 @@ CやC++でいう関数へのポインタ。
 LinQ（リンク）
 ----------------------
 
+
+Form Application
+=======================
+
+KeyEventArgs
+-----------------
+
+* Keyが押されたときのイベント挙動について定義
+
+| Event Name |                 概要                 |
+|------------|--------------------------------------|
+| KeyDown    | キーが押された時に発生します         |
+| KeyPress   | キーが押された時に発生します         |
+| KeyUp      | 押されたキーが離された時に発生します |
+
+| Properties |                                                概要                                                |   |
+|------------|----------------------------------------------------------------------------------------------------|---|
+| KeyData    | 同時に押されている修飾子キー（Ctrlキー、Shiftキー、Altキー）を含めた、押されたキーの情報を表します |   |
+| KeyCode    | 同時に押されている修飾子キーを除外した、キーボードコードだけを取得します                           |   |
+
+* [参考](http://dobon.net/vb/dotnet/control/keyevent.html)
+
+```cs
+private void ShapesListForm_KeyDown(object sender, KeyEventArgs e)
+{
+    if (e.KeyCode == Keys.Escape)
+    {
+        this.Close();
+    }
+}
+```
+
+
 Excel IO
 ======================
 
@@ -547,3 +580,4 @@ MessageBox.Show(path);
     * .NET Compact Framework を含めた .NET 環境用の、 C# で作られているテキストエディタの「エンジン」です。 Visual Studio を使っていればドラッグ＆ドロップで配置できる GUI コンポーネント、ドキュメント、ビュー、シンタックスハイライターなどを提供します
 
 <http://srad.jp/story/09/01/27/0547207/>
+
